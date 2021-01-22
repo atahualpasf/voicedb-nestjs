@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { validate } from 'config/validation';
-import { SharedModule } from './shared/shared.module';
-import expressConfig from 'config/express.config';
+import { validate } from 'src/config/validation';
+import expressConfig from 'src/config/express.config';
+import { AppLoggerModule } from './common/modules/app-logger/app-logger.module';
 
 const envFilePath = `environments/.env.${process.env.NODE_ENV}`;
 
@@ -16,7 +16,7 @@ const envFilePath = `environments/.env.${process.env.NODE_ENV}`;
       load: [expressConfig],
       validate,
     }),
-    SharedModule,
+    AppLoggerModule,
   ],
   controllers: [AppController],
   providers: [AppService],

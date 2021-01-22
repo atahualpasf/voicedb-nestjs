@@ -1,10 +1,25 @@
 import { plainToClass } from 'class-transformer';
-import { IsEnum, IsNumber, validateSync } from 'class-validator';
-import { Environment } from 'src/shared/enums/node-env-enum';
+import {
+  IsEnum,
+  IsIP,
+  IsNumber,
+  IsString,
+  validateSync,
+} from 'class-validator';
+import { Environment } from 'src/common/enums/node-env-enum';
 
 class EnvironmentVariables {
   @IsEnum(Environment)
   NODE_ENV: Environment;
+
+  @IsString()
+  AUTH_SECRET: string;
+
+  @IsString()
+  RESET_SECRET: string;
+
+  @IsIP()
+  EXPRESS_IP: string;
 
   @IsNumber()
   EXPRESS_PORT: number;
