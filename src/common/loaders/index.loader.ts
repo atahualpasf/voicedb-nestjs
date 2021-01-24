@@ -1,6 +1,6 @@
-import { INestApplication } from '@nestjs/common';
+import { NestExpressApplication } from '@nestjs/platform-express';
 import middlewaresLoader from './middlewares.loader';
 
-export default async (nestApp: INestApplication) => {
+export default async (nestApp: NestExpressApplication) => {
   await middlewaresLoader(nestApp);
 };
