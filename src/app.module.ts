@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { validate } from 'src/config/validation';
 import expressConfig from 'src/config/express.config';
 import { AppLoggerModule } from './common/modules/app-logger/app-logger.module';
+import baseConfig from './config/base.config';
 
 const envFilePath = `environments/.env.${process.env.NODE_ENV}`;
 
@@ -13,7 +14,7 @@ const envFilePath = `environments/.env.${process.env.NODE_ENV}`;
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: [envFilePath],
-      load: [expressConfig],
+      load: [baseConfig, expressConfig],
       validate,
     }),
     AppLoggerModule,
